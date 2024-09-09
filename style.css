@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: rgba(12, 56, 114, 0.589);
+    background-color: #385576;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
     display: flex;
     justify-content: center;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -109,32 +117,50 @@ body {
     margin-top: 50px;
 }
 
-
 .sticky-nav {
-
-    height: 200px;
-    width: 50px;
+    height: 250px;
+    width: 60px;
     background-color: black;
     border-radius: 30px;
     position: sticky;
     top: 60px;
-    left: -30px;
-
-}
-
-li {
-    color: #ffff;
-    padding: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0;
 }
 
 ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    width: 100%;
+}
+
+li {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    display: block;
+    width: 100%;
+    text-align: center;
     text-decoration: none;
-    padding: 0%;
+
 }
 
 .icon {
-    width: 40px;
+    width: 30px;
+    transition: transform 0.3s ease;
+}
 
+.icon:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .cv {
@@ -145,131 +171,211 @@ ul {
 
 
 
-.education-box{
-    
+.education-box, .experience-box {
     margin-bottom: 30px;
     padding-bottom: 30px;
     box-sizing: border-box;
-    border-bottom:  1px solid rgb(230,230,230) ;
+    border-bottom: 1px solid rgb(230, 230, 230);
     color: black;
     font-size: 16px;
     line-height: 21px;
-    opacity: 1;
+    opacity: 0; /* Inicialmente invisible para la animación */
     text-size-adjust: 100%;
-   
-
+    width: 90%;
+    transform: translateY(50px); /* Comienza 50px más abajo */
+    transition: all 0.5s ease; /* Transición suave */
 }
 
-.education-place{
+.education-place, .experience-place {
     margin-bottom: 30px;
 }
-.education-link {
+
+.education-link, .experience-link {
     margin-bottom: 15px;
 
 }
 
-.education-box a {
-    margin-bottom: 15px;
-    display: block;
-    color: black;
-
+.education-box a, .experience-box a {
+    
+        margin-bottom: 15px;
+        display: block;
+        color: black;
+        text-decoration: none;
+        text-align: left;
+    
 }
-.education-year{
+
+.education-year, .experience-year {
     border: 1px solid gray;
     border-radius: 20px;
-    padding: 8px 15px 8px 15px;
+    padding: 8px 15px;
     width: 100px;
-    
+    font-size: 12px;
 }
 
-.experience-box{
-    
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom:  1px solid rgb(230,230,230) ;
-    box-sizing: border-box;
-    color: black;
-    display: block;
-    font-size: 16px;
-    line-height: 21px;
+/* Animación al entrar en el viewport */
+.visible {
     opacity: 1;
-    text-size-adjust: 100%;
+    transform: translateY(0); /* Regresa a su posición original */
+}
+.work-section {
+    padding: 0px;
     
 }
 
-.experience-place{
-    margin-bottom: 30px;
-}
-.experience-link {
-    margin-bottom: 15px;
+.work-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
 }
-
-.experience-box a {
-    margin-bottom: 15px;
-    display: block;
-    color: black;
-
-}
-.experience-year{
-    border: 1px solid gray;
-    border-radius: 20px;
-    padding: 8px 15px 8px 15px;
-    width: 100px;
-    
+.work-item {
+    width: 50%;
+    margin-bottom: 1px;
+    background-color: rgb(252, 251, 251);
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Oculto inicialmente */
+    transform: translateY(30px); /* Desplazado hacia abajo inicialmente */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición suave */
 }
 
-.asesoriaintegral {
-    align-items: center;
+.work-item.visible {
+    opacity: 1; /* Visible cuando se desplaza hacia arriba */
+    transform: translateY(0); /* Posición normal cuando es visible */
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.formulario{
-    width: 500px;
-    margin: 20px auto;
-    padding: 20px ;
-    border-radius: 5px;
-    align-items: center;
-
-
-}
-
-.formulario input{
-    display: block;
-}
-
-
-.field input{
-
+.work-item img {
     width: 100%;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 3px;
-    border: 1px solid black;
-
-
+    border-bottom: 1px solid #ccc;
+    display: block;
 }
+
+.work-content {
+    padding: 15px;
+}
+
+.work-content h3 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.work-content p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    color: #555;
+}
+
+
+
+
+.services-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0px auto;
+}
+
+.service-container {
+    margin-bottom: 2px;
+    padding: 15px;
+    background-color: rgb(252, 251, 251);
+    border-radius: 7px;
+    margin-bottom: 1px;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.service-title {
+    font-size: 18px;
+    
+}
+
+.toggle-btn img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+.service-description {
+    margin-top: 15px;
+    display: none;
+    font-size: 16px;
+}
+
+#form {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "from_name email_id"
+      "message message"
+      "button button";
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  #from_name {
+    grid-area: from_name;
+  }
+  
+  #email_id {
+    grid-area: email_id;
+  }
+  
+  #message {
+    grid-area: message;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 100px; /* Ajusta la altura según lo necesites */
+  }
+  
+  #button {
+    grid-area: button;
+    background-color: #AEF535;
+    color: #555;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    justify-self: end;
+  }
+  
+  #button:hover {
+    background-color: #AEF535;
+  }
