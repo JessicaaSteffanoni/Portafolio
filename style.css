@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -18,10 +19,90 @@ html {
     scroll-behavior: smooth;
 }
 
+.sticky-nav {
+    height: 250px;
+    width: 60px;
+    background-color: black;
+    border-radius: 30px;
+    position: sticky;
+    top: 60px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 999;
+    /* Asegura que esté por encima del contenido */
+}
+
+@media screen and (max-width: 768px) {
+    .sticky-nav {
+        height: 60px;
+        width: 100%;
+        border-radius: 30px;
+        position: sticky;
+        top: 60px;
+        left: 0;
+        position: fixed;
+        /* Cambia a fixed para pantallas pequeñas */
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .sticky-nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .sticky-nav li {
+        display: inline-block;
+        padding: 0 10px;
+    }
+
+    .sticky-nav .icon {
+        width: 20px;
+        /* Ajusta el tamaño del icono para pantallas pequeñas */
+    }
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    width: 100%;
+}
+
+li {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.icon {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 .container {
 
     max-width: 800px;
-    /* margin: 50px auto; */
     width: 100%;
     margin: 50px 10px;
 
@@ -34,12 +115,13 @@ html {
     border-radius: 7px;
     margin-bottom: 1px;
     display: flex;
+    flex-direction: row;
+    /* Por defecto en pantallas grandes */
 }
 
 .subsection {
 
     width: 50%;
-
 
 }
 
@@ -84,14 +166,12 @@ html {
     color: #ffff;
     padding: 20px;
     border-radius: 30px;
-
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-black:hover {
-
     background-color: #ffff;
     color: black;
-
 }
 
 .btn-lined {
@@ -100,78 +180,28 @@ html {
     border-radius: 30px;
     text-decoration: underline;
     border: 2px solid black;
-
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-lined:hover {
-
     background: black;
     color: aliceblue;
     cursor: pointer;
 }
 
 .section-title {
-
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 50px;
 }
 
-.sticky-nav {
-    height: 250px;
-    width: 60px;
-    background-color: black;
-    border-radius: 30px;
-    position: sticky;
-    top: 60px;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px 0;
-}
-
-ul {
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    width: 100%;
-}
-
-li {
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-}
-
-a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-
-}
-
-.icon {
-    width: 30px;
-    transition: transform 0.3s ease;
-}
-
-.icon:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
 .cv {
     display: flex;
     justify-content: space-between;
-
 }
 
-
-
-.education-box, .experience-box {
+.education-box,
+.experience-box {
     margin-bottom: 30px;
     padding-bottom: 30px;
     box-sizing: border-box;
@@ -179,33 +209,34 @@ a {
     color: black;
     font-size: 16px;
     line-height: 21px;
-    opacity: 0; /* Inicialmente invisible para la animación */
+    opacity: 0;
     text-size-adjust: 100%;
     width: 90%;
-    transform: translateY(50px); /* Comienza 50px más abajo */
-    transition: all 0.5s ease; /* Transición suave */
+    transform: translateY(50px);
+    transition: all 0.5s ease;
 }
 
-.education-place, .experience-place {
+.education-place,
+.experience-place {
     margin-bottom: 30px;
 }
 
-.education-link, .experience-link {
+.education-link,
+.experience-link {
     margin-bottom: 15px;
-
 }
 
-.education-box a, .experience-box a {
-    
-        margin-bottom: 15px;
-        display: block;
-        color: black;
-        text-decoration: none;
-        text-align: left;
-    
+.education-box a,
+.experience-box a {
+    margin-bottom: 15px;
+    display: block;
+    color: black;
+    text-decoration: none;
+    text-align: left;
 }
 
-.education-year, .experience-year {
+.education-year,
+.experience-year {
     border: 1px solid gray;
     border-radius: 20px;
     padding: 8px 15px;
@@ -213,14 +244,55 @@ a {
     font-size: 12px;
 }
 
-/* Animación al entrar en el viewport */
 .visible {
     opacity: 1;
-    transform: translateY(0); /* Regresa a su posición original */
+    transform: translateY(0);
 }
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .section {
+        flex-direction: column;
+        /* Cambia la dirección del layout a columna en pantallas pequeñas */
+        padding: 30px;
+    }
+
+    .subsection {
+        width: 100%;
+        /* Subsecciones ocupan el 100% del ancho en pantallas pequeñas */
+        margin-bottom: 20px;
+        /* Añade espacio entre subsecciones */
+    }
+
+    .status {
+        margin-right: 0;
+        /* Elimina el margen derecho en pantallas pequeñas */
+        margin-bottom: 20px;
+        /* Añade un margen inferior para separar los elementos */
+    }
+
+    .btn-black,
+    .btn-lined {
+        padding: 15px;
+        border-radius: 20px;
+        /* Ajusta el tamaño de los botones en pantallas pequeñas */
+    }
+
+    .education-box,
+    .experience-box {
+        width: 100%;
+        /* Ocupan el 100% en pantallas pequeñas */
+    }
+
+    .porfile {
+        height: 150px;
+        /* Reduce la altura de la imagen de perfil en pantallas pequeñas */
+    }
+}
+
 .work-section {
     padding: 0px;
-    
+
 }
 
 .work-container {
@@ -229,6 +301,7 @@ a {
     justify-content: space-between;
 
 }
+
 .work-item {
     width: 50%;
     margin-bottom: 1px;
@@ -237,14 +310,19 @@ a {
     border-radius: 7px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Oculto inicialmente */
-    transform: translateY(30px); /* Desplazado hacia abajo inicialmente */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición suave */
+    opacity: 0;
+    /* Oculto inicialmente */
+    transform: translateY(30px);
+    /* Desplazado hacia abajo inicialmente */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Transición suave */
 }
 
 .work-item.visible {
-    opacity: 1; /* Visible cuando se desplaza hacia arriba */
-    transform: translateY(0); /* Posición normal cuando es visible */
+    opacity: 1;
+    /* Visible cuando se desplaza hacia arriba */
+    transform: translateY(0);
+    /* Posición normal cuando es visible */
 }
 
 
@@ -296,7 +374,7 @@ a {
 
 .service-title {
     font-size: 18px;
-    
+
 }
 
 .toggle-btn img {
@@ -317,65 +395,122 @@ a {
 
 #form {
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px;
+    /* Ajuste del tamaño máximo */
     margin: auto;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    /* Color de fondo suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra para destacar el formulario */
     display: grid;
-    gap: 15px;
+    gap: 20px;
+    /* Mayor separación entre los elementos */
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-      "from_name email_id"
-      "message message"
-      "button button";
-  }
-  
-  .field {
+    grid-template-areas:
+        "from_name email_id"
+        "message message"
+        "button button";
+}
+
+.field {
     display: flex;
     flex-direction: column;
     margin: 0;
-  }
-  
-  label {
-    margin-bottom: 5px;
+}
+
+label {
+    margin-bottom: 8px;
+    /* Mayor espacio entre etiqueta y campo */
     font-weight: bold;
-  }
-  
-  input[type="text"] {
-    padding: 10px;
+    color: #333;
+    /* Color de texto más oscuro */
+    font-size: 14px;
+}
+
+input[type="text"],
+textarea {
+    padding: 12px;
+    /* Mayor espacio interior */
     border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  #from_name {
-    grid-area: from_name;
-  }
-  
-  #email_id {
-    grid-area: email_id;
-  }
-  
-  #message {
+    border-radius: 6px;
+    /* Bordes más redondeados */
+    font-size: 14px;
+    transition: border-color 0.3s;
+    /* Transición suave en hover/focus */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #AEF535;
+    /* Resalta el borde al enfocar */
+    outline: none;
+    /* Elimina el contorno por defecto */
+}
+
+#message {
     grid-area: message;
-    width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    height: 100px; /* Ajusta la altura según lo necesites */
-  }
-  
-  #button {
+    border-radius: 6px;
+    height: 120px;
+    /* Ajusta la altura */
+    font-size: 14px;
+}
+
+#button {
     grid-area: button;
     background-color: #AEF535;
-    color: #555;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px;
+    /* Tamaño más grande del botón */
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
     justify-self: end;
-  }
-  
-  #button:hover {
-    background-color: #AEF535;
-  }
+    transition: background-color 0.3s ease;
+}
+
+#button:hover {
+    background-color: #98d92b;
+    /* Color de fondo al pasar el mouse */
+}
+
+@media screen and (max-width: 768px) {
+    #form {
+        grid-template-columns: 1fr;
+        /* Un solo campo por fila en pantallas pequeñas */
+        grid-template-areas:
+            "from_name"
+            "email_id"
+            "message"
+            "button";
+    }
+
+    #button {
+        justify-self: center;
+        /* Centra el botón en pantallas pequeñas */
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 120px 10px;
+    }
+
+    .section {
+        flex-direction: column;
+    }
+
+    .subsection {
+        width: 100%;
+    }
+
+    .work-item {
+        width: 100%;
+    }
+}
